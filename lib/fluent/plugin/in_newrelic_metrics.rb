@@ -16,7 +16,10 @@ module Fluent
     config_param :tag, :string
     config_param :api_key, :string
     config_param :metrics, :string
-    config_param :alert_policy_id, :integer, default: nil
+    config_param :alert_policy_id, :default => nil do |val|
+      val.nil? ? nil : val.split(',').map{ |id| id.to_i }
+    end
+
     config_param :interval, :time, default: '1m'
 
     def configure(conf)
@@ -45,7 +48,7 @@ module Fluent
         records = JSON.parse(results)[@metrics]
         if @alert_policy_id
           records = records.select{ |record|
-            record['links']['alert_policy'] == @alert_policy_id
+            @alert_policy_id.include?(record['links']['alert_policy'])
           }
         end
         records.each do |record|
