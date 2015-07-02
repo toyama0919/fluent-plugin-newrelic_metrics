@@ -55,7 +55,7 @@ module Fluent
           before_last_reported_at = @state["#{record['id']}"]
           last_reported_at = Time.parse(record['last_reported_at'])
           if before_last_reported_at.nil? || (before_last_reported_at < last_reported_at)
-            router.emit @tag, last_reported_at, record
+            router.emit @tag, last_reported_at.to_i, record
             @state["#{record['id']}"] = last_reported_at
           end
         end
