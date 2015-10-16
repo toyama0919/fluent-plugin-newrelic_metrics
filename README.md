@@ -10,6 +10,7 @@ NewrelicMetrics plugin for fluentd
   interval 1m
   metrics applications # applications or servers
   api_key "#{ENV['NEWRELIC_API_KEY']}"
+  alert_policy_id XXXXXX,YYYYYY # optional. comma separated values. default is all info.
 </source>
 
 <match newrelic_applications.exsample>
@@ -22,6 +23,7 @@ NewrelicMetrics plugin for fluentd
   interval 1m
   metrics servers # applications or servers
   api_key "#{ENV['NEWRELIC_API_KEY']}"
+  alert_policy_id XXXXXX,YYYYYY # optional. comma separated values. default is all info.
 </source>
 
 <match newrelic_servers.exsample>
@@ -33,13 +35,6 @@ NewrelicMetrics plugin for fluentd
 ```
 #TODO
 ```
-
-## parameter
-
-param    |   value|default
---------|------|------
-interval|leftronic access key|1m
-stream_name|leftronic stream name|test
 
 ## Installation
 ```
