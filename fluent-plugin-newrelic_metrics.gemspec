@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency "rest-client"
+  gem.add_runtime_dependency "rest-client", '~> 1.6.8'
 
   gem.add_development_dependency 'bundler', '~> 1.7.2'
   gem.add_development_dependency 'fluentd', '~> 0.10.58'
