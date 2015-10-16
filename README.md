@@ -33,7 +33,8 @@ NewrelicMetrics plugin for fluentd
 
 #### output
 ```
-#TODO
+2015-10-16 10:00:01 +0900 infra.nerelic_servers: {"id":YYYYYY,"account_id":XXXXXX,"name":"web01","host":"web01","health_status":"green","reporting":true,"last_reported_at":"2015-10-16T01:00:01+00:00","summary":{"cpu":2.2,"cpu_stolen":0.77,"disk_io":0.29,"memory":51.1,"memory_used":1944059904,"memory_total":3806330880,"fullest_disk":39.3,"fullest_disk_free":18792000000},"links":{"alert_policy":123456}}
+2015-10-16 10:00:01 +0900 infra.nerelic_servers: {"id":YYYYYY,"account_id":XXXXXX,"name":"web02","host":"web02","health_status":"green","reporting":true,"last_reported_at":"2015-10-16T01:00:01+00:00","summary":{"cpu":1.38,"cpu_stolen":0.37,"disk_io":0.13,"memory":25.2,"memory_used":960495616,"memory_total":3806330880,"fullest_disk":38.3,"fullest_disk_free":19102000000},"links":{"alert_policy":123456}}
 ```
 
 ## Installation
