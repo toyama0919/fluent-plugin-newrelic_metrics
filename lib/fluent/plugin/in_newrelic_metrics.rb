@@ -21,10 +21,18 @@ module Fluent
     end
 
     config_param :interval, :time, default: '1m'
+    config_param :filter, :hash, default: {}
 
     def configure(conf)
       super
       @state = {}
+      @body = {}
+
+      unless @filter.empty?
+        @filter.each do |k, v|
+          @body["filter[#{k}]"] = v
+        end
+      end
     end
 
     def start
@@ -44,7 +52,7 @@ module Fluent
 
     def emit_newrelic_metrics
       begin
-        results = RestClient.get PREFIX + "/#{@metrics}.json", 'X-Api-Key' => @api_key
+        results = RestClient.post PREFIX + "/#{@metrics}.json", @body, 'X-Api-Key' => @api_key
         records = JSON.parse(results)[@metrics]
         if @alert_policy_id
           records = records.select{ |record|
